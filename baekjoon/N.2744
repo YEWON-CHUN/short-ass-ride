@@ -1,0 +1,12 @@
+#영어 소문자와 대문자로 이루어진 단어를 입력받은 뒤, 대문자는 소문자로, 소문자는 대문자로 바꾸어 출력하는 프로그램을 작성하시오.
+
+string = list(map(ord, input().strip()))
+newstring = []
+for i in string:
+    if 65<=i<=90:
+        newstring.append(chr(i+32))
+    elif 97<=i<=122:
+        newstring.append(chr(i-32))
+
+for j in newstring:
+    print(j,end='')
