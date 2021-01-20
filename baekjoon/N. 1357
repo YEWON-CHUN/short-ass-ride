@@ -3,6 +3,7 @@
 #예를 들어, X=123일 때, Rev(X) = 321이다. 그리고, X=100일 때, Rev(X) = 1이다.
 #두 양의 정수 X와 Y가 주어졌을 때, Rev(Rev(X) + Rev(Y))를 구하는 프로그램을 작성하시오
 
+
 def Rev(a): #X가 문자열 형태로 입력
     a = list(str(a))
     a.reverse()
