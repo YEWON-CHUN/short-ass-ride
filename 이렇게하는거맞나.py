@@ -1,1 +1,0 @@
-print("that's a long ass ride")
