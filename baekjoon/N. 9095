@@ -1,0 +1,58 @@
+#정수 4를 1, 2, 3의 합으로 나타내는 방법은 총 7가지가 있다. 합을 나타낼 때는 수를 1개 이상 사용해야 한다.
+#정수 n이 주어졌을 때, n을 1, 2, 3의 합으로 나타내는 방법의 수를 구하는 프로그램을 작성하시오.
+
+
+#method 1)
+import math
+T = int(input())
+for _ in range(T):
+    N = int(input())
+    l = []
+    cnt = 0
+    sum = 0
+    for a in range(N+1):
+        for b in range(N//2+1):
+            for c in range(N//3+1):
+                if a+(2*b)+(3*c) == N:
+                    l.append([a,b,c])
+                    cnt +=1
+
+    for x in l:
+        top = math.factorial(x[0]+x[1]+x[2])
+        bottom = math.factorial(x[0]) * math.factorial(x[1]) * math.factorial(x[2])
+        sum += top//bottom
+
+    print(sum)
+
+
+
+
+#method 2)
+def fac(n):
+    if n==1:
+        return 1
+    return n * fac(n-1)
+
+T = int(input())
+for _ in range(T):
+    N = int(input())
+    l = []
+    cnt = 0
+    total = 0
+    for a in range(N+1):
+        for b in range(N//2+1):
+            for c in range(N//3+1):
+                if a+(2*b)+(3*c) == N:
+                    l.append([a,b,c])
+                    cnt +=1
+
+    for x in range(cnt):
+        top = fac(sum(l[x]))
+        bottom = 1
+        for y in range(len(l[x])):
+            if l[x][y]!=0:
+                bottom *= fac(l[x][y])
+        k = top//bottom
+        total += k
+
+    print(total)
