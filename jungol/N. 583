@@ -1,0 +1,32 @@
+#세 개의 실수를 입력받아,
+#가장 큰 수를 올림한 정수를 출력하고,
+#가장 작은 수를 내림한 정수를 출력한 후,
+#남은 수를 반올림한 정수를 출력하는 프로그램을 작성하시오.
+#입력되는 실수는 -1000이상 1000이하이다.
+
+
+num = list(map(float, input().split()))
+num1 = max(num)
+num2 = min(num)
+num.remove(num1)
+num.remove(num2)
+num3 = num[0]
+
+if num1 == int(num1):
+    print(num1,end=' ')
+else:
+    if num1>0:
+        print(int(num1)+1,end=' ')
+    else:
+        print(int(num1),end=' ')
+
+if num2 == int(num2):
+    print(num2, end=' ')
+else:
+    if num2<0:
+        print(int(num2)-1,end=' ')
+    else:
+        print(int(num2), end=' ')
+
+
+print('{}'.format(int(round(num3,0))))
