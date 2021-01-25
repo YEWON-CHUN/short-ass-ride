@@ -1,0 +1,11 @@
+# 10개의 정수를 입력받아 버블정렬로 내림차순 정렬을 하면서 하나의 단계가 끝날 때마다 그 정렬결과를 출력하는 프로그램을 작성하시오.
+
+
+num = list(map(int, input().split()))
+for i in range(9):
+    for j in range(0,9-i):
+        if num[j] < num[j+1]:
+            num[j],num[j+1] = num[j+1],num[j]
+    for h in num:
+        print(h,end=' ')
+    print('\n',end='')
