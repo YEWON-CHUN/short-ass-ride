@@ -1,0 +1,41 @@
+method 1)
+N = int(input())
+h = list(map(int, input().split()))
+h.sort()
+h_list = list(set(h))
+c_list = dict()
+cnt = 0
+
+for i in h_list:
+    c_list[i]=h.count(i)
+print(c_list)
+print()
+
+for j in h_list:
+    if c_list[j] >= j:
+        cnt += c_list[j]//j
+        c_list[j+1] = c_list[j]%j + c_list[j+1]
+        print(c_list)
+    else:
+        c_list[j + 1] = + c_list[j]
+        print(c_list)
+
+print()
+print(c_list)
+print(cnt)
+
+
+method 2)
+n = int(input())
+data = list(map(int, input().split()))
+data.sort()
+
+cnt = 0
+group = 0
+for i in data:
+    cnt +=1
+    if cnt >= i:
+        group +=1
+        cnt = 0
+
+print(cnt)
