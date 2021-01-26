@@ -1,0 +1,7 @@
+N, M = map(int, input().split())
+k = 0
+for i in range(N):
+    k2 = min(map(int, input().split()))
+    if k2>k:
+        k = k2
+print(k)
