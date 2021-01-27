@@ -1,0 +1,29 @@
+#강민이가 초등학교 3학년일 때, 담임선생님이 이런 문제를 냈었다.
+#숫자 1, 2, 7, 8, 9 를 사용해서 만든 두 숫자를 더했을 때, 나올 수 있는 가장 작은 수는 무엇일까요?
+#강민이는 이 문제의 답이 207(78 + 129)이라고 생각했다. 그런데 선생님은 책 4페이지에 있는 비슷한 문제를 모두 풀어오라는 숙제를 내셨다. 
+#작년부터 프로그래밍을 시작한 강민이는 이런 숙제보다 코딩을 더 재밌어했다. 그래서 강민이는 이 숙제를 코딩으로 해결하기로 했다!
+
+
+while True:
+    num = list(map(int, input().split()))
+    if num[0] == 0:
+        break
+    else:
+        n = num[0]
+        num = num[1:]
+        num.sort()
+        small = list(i for i in num if i!=0)[0:2]
+        num.remove(small[0])
+        num.remove(small[1])
+
+        odd = str(small[0])
+        even = str(small[1])
+
+        for i in range(0,len(num),2):
+            odd = odd + str(num[i])
+        for j in range(1,len(num),2):
+            even = even + str(num[j])
+
+
+        print(int(even)+int(odd))
+
