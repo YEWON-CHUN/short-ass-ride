@@ -1,0 +1,25 @@
+#백숙집 주방 이모 효빈이는 N명의 팬들이 학교에 머무르는 시간 [s, e]들을 몰래 조사했다. 효빈이는 욱제가 학교에 머무르는 시간을 계산해서 그 시간동안 땡땡이를 치기로 했다. 
+#효빈이와 함께 욱제가 학교에 머무르는 최소의 시간을 계산해 보자!
+
+
+N = int(input())
+time = []
+for _ in range(N):
+    time.append(list(map(int, input().split())))
+time.sort()
+
+
+key = time[0][1]
+move = 0
+for i in range(N-1):
+    if time[i+1][0] <= key:
+        if key <= time[i+1][1]:
+            continue
+        else:
+            key = time[i+1][1]
+            continue
+    else:
+        move += time[i+1][0] - key
+        key = time[i+1][0]
+
+print(move)
