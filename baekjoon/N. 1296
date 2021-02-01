@@ -1,0 +1,20 @@
+#((L+O)*(L+V)*(L+E)*(O+V)*(O+E)*(V+E)) mod 100
+#오민식의 영어 이름과 나머지 여자들의 이름이 주어졌을 때, 오민식과 성공할 확률이 가장 높은 여자의 이름을 출력하는 프로그램을 작성하시오. 
+#여러명일 때에는 알파벳으로 가장 앞서는 이름을 출력하면 된다.
+
+
+name = list(input().strip())
+myL, myO, myV, myE = name.count('L'), name.count('O'), name.count('V'), name.count('E')
+N = int(input())
+boys = []
+for _ in range(N):
+    boy = list(input().strip())
+    L = boy.count('L') + myL
+    O = boy.count('O') + myO
+    V = boy.count('V') + myV
+    E = boy.count('E') + myE
+    result = ((L + O) * (L + V) * (L + E) * (O + V) * (O + E) * (V + E)) % 100
+    boys.append([''.join(boy), result])
+
+mylove = sorted(boys, key=lambda x: (-x[1], x[0]), reverse=True)
+print(mylove[len(mylove)-1][0])
