@@ -1,0 +1,15 @@
+location = input().strip()
+garo = ord(location[0])-96
+sero = int(location[1])
+cnt = 0
+
+moves = [[-1, -2], [+1, -2], [-1, +2], [+1, +2], [-2, -1], [-2, +1], [+2, -1], [+2, +1]]
+for i in range(8):
+    dx = garo + moves[i][0]
+    dy = sero + moves[i][1]
+    if 1 <= dx <= 8 and 1 <= dy <= 8:
+        cnt += 1
+    else:
+        continue
+
+print(cnt)
