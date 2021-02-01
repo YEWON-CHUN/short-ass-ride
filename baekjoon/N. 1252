@@ -1,0 +1,19 @@
+#두 개의 이진수를 입력받아 이를 더하는 프로그램을 작성하시오.
+
+
+a,b = map(str, input().split())
+new_a, new_b = 0,0
+
+for x in range(len(a)-1,-1,-1):
+    if a[x] == '0':
+        continue
+    elif a[x] == '1':
+        new_a = new_a + 2**(len(a)-x-1)
+
+for y in range(len(b)-1,-1,-1):
+    if b[y] == '0':
+        continue
+    elif b[y] == '1':
+        new_b = new_b + 2**(len(b)-y-1)
+
+print(format(new_a+new_b, 'b'))
