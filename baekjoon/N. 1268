@@ -1,0 +1,17 @@
+#각 학생들이 1학년부터 5학년까지 속했던 반이 주어질 때, 임시 반장을 정하는 프로그램을 작성하시오.
+
+
+num = []
+for _ in range(int(input())):
+    num.append(input().strip().split())
+
+result = []
+for i in range(len(num)):
+    cnt = []
+    for j in range(5):
+        newlist = list(k for k in range(len(num)) if (num[k][j] == num[i][j]))
+        cnt = cnt + newlist
+    result.append(len(set(cnt)))
+
+maxi = result.index(max(result))
+print(maxi+1)
