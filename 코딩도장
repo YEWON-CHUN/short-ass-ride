@@ -1,0 +1,63 @@
+# 코딩도장 정리
+
+# 리스트 - 할당과 복사
+a = [1,2,3]
+b = a.copy()  # 리스트명.copy()를 해야 b의 값을 바꿔도 a의 값까지 변하지 않음.
+
+
+
+# 리스트 - 다차원 리스트 복사하기
+import copy  # copy 모듈 import
+a = [1,2,3]
+b = copy.deepcopy(a) # copy() 함수와 다르게 deepcopy 함수는 ()안에 복사할 리스트를 넣어주어야한다
+
+
+
+# 문자열 - 문자 바꾸기
+table = str.maketrans('aeiou','12345')
+new = 'apple'.translate(table)  # new = '1pp12'
+
+
+
+# 문자열 - 오른쪽/왼쪽/가운데 정렬하기
+a = 'NCT'
+a.ljust(10)  # 왼쪽 정렬
+a.rjust(10)  # 오른쪽 정렬
+a.center(10)  # 가운데 정렬
+
+
+
+# 문자열 - 왼쪽에 0 채우기
+a = 825
+a.zfill(6)  # 000825 출력 / 숫자.zfill(0 포함 문자열 길이)
+
+
+
+# 문자열 - 위치 찾기
+a = 'NCT'
+a.find('C')  # 1 출력 / 문자열.find(찾는문자)
+
+
+
+# 딕셔너리 - 키-값 쌍 추가
+a = {'js': 19, 'cl': 20, 'rj': 21}
+a.setdefalut('jn')  # {'js': 19, 'cl': 20, 'rj': 21, 'jn': None}
+a.setdefault('jn', 21)  # {'js': 19, 'cl': 20, 'rj': 21, 'jn': 21}
+
+
+
+# 딕셔너리 - value 수정하기
+a = {'js': 19, 'cl': 20, 'rj': 100}
+a.update(rj=100)
+
+
+
+# 딕셔너리 - 키-값 쌍 삭제하기
+a = {'js': 19, 'cl': 20, 'rj': 100}
+a.pop('js')  # {'cl': 20, 'rj': 100}
+
+
+
+# 딕셔너리 - 리스트로 딕셔너리 만들기
+keys = ['a', 'b', 'c', 'd']
+x = dict.fromkeys(keys)  # {'a': None, 'b': None, 'c': None, 'd': None}
