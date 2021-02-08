@@ -1,0 +1,8 @@
+file = open('word.txt','r')
+cnt = 0
+for line in file:
+    newline = line.strip('\n')
+    if len(newline) <= 10:
+        cnt += 1
+print(cnt)
+file.close()
