@@ -1,0 +1,42 @@
+#기존의 K개의 랜선으로 N개의 랜선을 만들 수 없는 경우는 없다고 가정하자. 그리고 자를 때는 항상 센티미터 단위로 정수길이만큼 자른다고 가정하자. 
+#N개보다 많이 만드는 것도 N개를 만드는 것에 포함된다. 이때 만들 수 있는 최대 랜선의 길이를 구하는 프로그램을 작성하시오.
+
+
+method 1)
+K, N = map(int, input().split())
+line = []
+for _ in range(K):
+    line.append(int(input()))
+
+test = sum(line) // N
+for i in range(test, 0, -1):
+    test = list(map(lambda x: x//i, line))
+    if sum(test) >= N:
+        print(i)
+        break
+    else:
+        continue
+        
+        
+method 2)
+K, N = map(int, input().split())
+line = []
+for _ in range(K):
+    line.append(int(input()))
+
+low = 1
+high = max(line)
+result = 0
+
+while low <= high:
+    total = 0
+    mid = (low + high) // 2
+    for i in line:
+        total += i // mid
+    if total < N:
+        high = mid - 1
+    else:
+        result = mid
+        low = mid + 1
+
+print(result)
