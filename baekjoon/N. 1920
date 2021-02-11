@@ -1,0 +1,31 @@
+#N개의 정수 A[1], A[2], …, A[N]이 주어져 있을 때, 이 안에 X라는 정수가 존재하는지 알아내는 프로그램을 작성하시오.
+
+
+N = int(input())
+A = list(map(int, input().split()))
+A.sort()
+M = int(input())
+num = list(map(int, input().split()))
+
+for i in num:
+    start = 0
+    end = len(A)-1
+    yn = 0
+
+    while start <= end:
+        mid = (start + end) // 2
+        if i == A[mid]:
+            print(1)
+            yn = 1
+            break
+
+        elif i < A[mid]:
+            end = mid - 1
+            continue
+
+        elif i > A[mid]:
+            start = mid + 1
+            continue
+
+    if yn == 0:
+        print(0)
