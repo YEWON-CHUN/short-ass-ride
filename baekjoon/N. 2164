@@ -1,0 +1,22 @@
+#이제 다음과 같은 동작을 카드가 한 장 남을 때까지 반복하게 된다. 우선, 제일 위에 있는 카드를 바닥에 버린다. 그 다음, 제일 위에 있는 카드를 제일 아래에 있는 카드 밑으로 옮긴다.
+#N이 주어졌을 때, 제일 마지막에 남게 되는 카드를 구하는 프로그램을 작성하시오.
+
+
+k = int(input())
+N = [i+1 for i in range(k)]
+if k == 1:
+    print(1)
+
+else:
+    i = 0
+    a = 2
+    while True:
+        b = a + (2 ** i)
+        if a <= k < b:
+            break
+        else:
+            i += 1
+            a = b
+
+    result = 2 * ((k - a) + 1)
+    print(result)
