@@ -1,0 +1,33 @@
+#N과 K가 주어지면 (N, K)-요세푸스 순열을 구하는 프로그램을 작성하시오.
+
+
+method 1)
+N, K = map(int, input().split())
+s = list(range(1, N+1))
+result = [K]
+key = K - 1
+s[key] = 0
+
+for i in range(N-1):
+    cnt = 0
+    j = 1
+    while cnt < K:
+        if s[(key + j) % N] != 0:
+            cnt += 1
+        j += 1
+    result.append(s[(key + j - 1) % N])
+    s[(key + j - 1) % N] = 0
+    key = (key + j - 1) % N
+print('<'+', '.join(list(map(str, result)))+'>')
+
+
+method 2)
+N, K = map(int, input().split())
+s = list(range(1, N+1))
+cnt = 0
+result = []
+
+while len(s) > 0:
+    cnt = (cnt + K - 1) % len(s)
+    result.append(s.pop(cnt))
+print('<'+', '.join(map(str,result))+'>')
