@@ -1,0 +1,44 @@
+# https://www.acmicpc.net/problem/1041 
+
+
+method 1)
+n = int(input())
+dice = list(map(int, input().split()))
+
+if n == 1:
+    dice.sort()
+    print(sum(dice[:5]))
+else:
+    c1 = min(dice)
+    c2, c3 = 999999, 999999
+    for i in range(6):
+        for j in range(6):
+            if i + j != 5 and i != j:
+                c2 = min(c2, dice[i]+dice[j])
+
+    for i in range(6):
+        for j in range(6):
+            for k in range(6):
+                if i + j != 5 and i + k != 5 and j + k != 5 and i != j and i != k and j != k:
+                    c3 = min(c3, dice[i] + dice[j] + dice[k])
+
+    side1 = (4 * (n - 1) * (n - 2)) + ((n - 2) ** 2)
+    side2 = 4 * (2 * n - 3)
+    side3 = 4
+    total = (c1 * side1) + (c2 * side2) + (c3 * side3)
+    print(total)
+    
+    
+method 2)
+n = int(input())
+a, b, c, d, e, f = list(map(int, input().split()))
+
+if n == 1:
+    A = [a, b, c, d, e, f]
+    A.sort()
+    print(sum(A[:5]))
+else:
+    A = [min(a, f), min(b, e), min(c, d)]
+    A.sort()
+    result = (A[0] * ((4 * (n - 1) * (n - 2)) + ((n - 2) ** 2))) + (sum(A[:2]) * 4 * (2 * n - 3)) + (sum(A[:3]) * 4)
+    print(result)
