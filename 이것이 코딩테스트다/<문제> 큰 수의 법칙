@@ -1,0 +1,11 @@
+N, M, K = map(int, input().split())
+num = list(map(int, input().split()))
+num.sort(reverse = True)
+result = 0
+
+for i in range(M):
+    if i % (K + 1) == K:
+        result += num[1]
+    else:
+        result += num[0]
+print(result)
