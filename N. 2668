@@ -1,0 +1,61 @@
+
+
+method 1)
+import itertools
+N = int(input())
+num = []
+for i in range(N):
+    num.append([i+1, int(input())])
+
+for j in range(N, -1, -1):
+    case = list(itertools.combinations(num, j))
+    for h in case:
+        num1 = list(map(lambda x: x[0], h))
+        num2 = list(sorted(map(lambda x: x[1], h)))
+        if num1 == num2:
+            print(j)
+            for k in num1:
+                print(k)
+            quit()
+            
+
+method 2)
+import itertools
+N = int(input())
+num = []
+for i in range(N):
+    num.append(int(input()))
+
+for j in range(N, 0, -1):
+    num1 = list(itertools.combinations(range(1, N+1), j))
+    for h in num1:
+        num2 = list(sorted((map(lambda x: num[x - 1], h))))
+        if len(set(num2)) == j:
+            if list(h) == num2:
+                print(j)
+                for x in num2:
+                    print(x)
+                quit()
+                
+                
+method 3)
+import sys
+N = int(sys.stdin.readline())
+num = {}
+for i in range(1, N+1):
+    num[i] = int(sys.stdin.readline())
+top = set(num.keys())
+bottom = set(num.values())
+
+while top != bottom:
+    for j in top:
+        if j not in bottom:
+            del num[j]
+    top = set(num.keys())
+    bottom = set(num.values())
+
+top = list(top)
+top.sort()
+print(len(top))
+for x in top:
+    print(x)
