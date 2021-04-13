@@ -1,0 +1,42 @@
+(1)
+n = int(input())
+height = []
+for i in range(n):
+    height.append(int(input()))
+
+answer = []
+
+for i in range(n-1):
+    cnt = 0
+    key = i + 1
+    while key < n:
+        if height[key] >= height[i]:
+            break
+        else:
+            key += 1
+            cnt += 1
+    answer.append(cnt)
+
+print(sum(answer))
+
+(2)
+n = int(input())
+height = []
+for i in range(n):
+    height.append(int(input()))
+
+answer = [height[0]]
+cnt = 0
+
+for i in range(1, n):
+    while len(answer) > 0:
+        if height[i] >= answer[-1]:
+            answer.pop()
+        else:
+            break
+    answer.append(height[i])
+    cnt += len(answer) - 1
+
+print(cnt)
+
+# stack 자료구조의 특성을 이용함
