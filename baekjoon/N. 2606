@@ -1,0 +1,22 @@
+# https://www.acmicpc.net/problem/2606
+
+def dfs(graph, v, visited):
+    visited[v] = True
+    for i in graph[v]:
+        if not visited[i]:
+            dfs(graph, i, visited)
+
+
+N = int(input())
+M = int(input())
+visited = [False for _ in range(N+1)]
+graph = [[] for _ in range(N+1)]
+
+for i in range(M):
+    x, y = map(int, input().split())
+    graph[x].append(y)
+    graph[y].append(x)
+
+
+dfs(graph, 1, visited)
+print(visited.count(True)-1)
