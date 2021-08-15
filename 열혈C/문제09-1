@@ -1,0 +1,29 @@
+#include <stdio.h>
+int fibonacci(int how);
+
+int main(void)
+{
+	int how;
+	printf("피보나치 수열을 몇 개 출력할까요? : ");
+	scanf("%d", &how);
+	fibonacci(how);
+	return 0;
+}
+
+int fibonacci(int how)
+{
+	int num1 = 0;
+	int num2 = 1;
+	int result=0;
+	int i;
+
+	printf("%d, %d, ", num1, num2);
+	for(i=3; i<=how; i++)
+	{
+		result = num1 + num2;
+		printf("%d, ", result);
+		num1 = num2;
+		num2 = result;
+	}
+	return 0;
+}
