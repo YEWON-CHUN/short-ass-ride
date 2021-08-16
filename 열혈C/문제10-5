@@ -1,0 +1,25 @@
+#include <stdio.h>
+int main(void)
+{
+	int cnt=0, key=1;
+	while(1)
+	{
+		int i, cnt2=0;
+		for(i=2;i<key;i++)
+		{
+			if (key % i != 0)
+				cnt2 += 1;
+			else
+				continue;
+		}
+		if (cnt2 == key - 2)
+		{
+			printf("%d  ", key);
+			cnt += 1;
+		}
+		if (cnt == 10)
+			break;
+		key++;
+	}
+	return 0;
+}
