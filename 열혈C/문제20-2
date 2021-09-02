@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main(void)
+{
+	const int n;
+	printf("n을 입력하세요 : ");
+	scanf("%d", &n);
+
+	int dx[4] = { 1,0,-1,0 };
+	int dy[4] = { 0,1,0,-1 };
+	int arr[30][30] = { 0 };
+	int i = 0, j = 0, key = 0, num = 0;
+
+	for (num = 0; num < n * n; num++)
+	{
+		arr[i][j] = num + 1;
+		if (i + dy[key] >= n || j + dx[key] >= n)
+			key = (key + 1) % 4;
+		else if (i + dy[key] < 0 || j + dx[key] < 0)
+			key = (key + 1) % 4;
+		else if (arr[i + dy[key]][j + dx[key]] != 0)
+			key = (key + 1) % 4;
+
+		i += dy[key];
+		j += dx[key];
+	}
+
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++)
+		{
+			printf("%5d", arr[i][j]);
+		}
+		printf("\n\n");
+	}
+	return 0;
+}
