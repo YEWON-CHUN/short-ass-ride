@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(void)
+{
+	int computer[3] = { -1,-1,-1 };
+	int me[3];
+	int strike = 0, ball = 0, i, cnt = 0;
+	srand((int)time(NULL));
+	for (i = 0; i < 3; i++)
+	{
+		while (1)
+		{
+			int temp = rand() % 9;
+			if ((temp != computer[0]) && (temp != computer[1]) && (temp != computer[2]))
+			{
+				computer[i] = temp;
+				break;
+			}
+		}
+	}
+	printf("정답 : %d %d %d\n", computer[0], computer[1], computer[2]);
+	printf("Start Game!\n");
+	while (strike < 3)
+	{
+		strike = 0, ball = 0;
+		cnt++;
+		printf("3개의 숫자 선택 : ");
+		scanf("%d %d %d", &me[0], &me[1], &me[2]);
+		if (me[0] == computer[0])
+			strike++;
+		else if (computer[0] == me[1] || computer[0] == me[2])
+			ball++;
+
+		if (me[1] == computer[1])
+			strike++;
+		else if (computer[1] == me[0] || computer[1] == me[2])
+			ball++;
+
+		if (me[2] == computer[2])
+			strike++;
+		else if (computer[2] == me[0] || computer[2] == me[1])
+			ball++;
+		printf("%d번째 도전 결과 : %d Strike, %d ball!!\n\n", cnt, strike, ball);
+	}
+	printf("Game Over!\n");
+	return 0;
+}
