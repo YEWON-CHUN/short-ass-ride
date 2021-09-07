@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <string.h>
+#define _CRT_SECURE_NO_WARNINGS
+
+int main(void)
+{
+	char arr[20];
+	int i, sum = 0;
+	printf("문자열을 입력하세요 : ");
+	scanf("%s", arr);
+
+	for (i = 0; i < strlen(arr); i++)
+	{
+		if ('1' <= arr[i] && arr[i] <= '9')
+			sum += arr[i] - '1' + 1;
+	}
+	printf("%d\n", sum);
+	return 0;
+}
