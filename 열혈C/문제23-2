@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+typedef struct point
+{
+	int xpos;
+	int ypos;
+} Point;
+
+typedef struct
+{
+	Point left_bottom;
+	Point right_top;
+} Rectangle;
+
+int calculation(Rectangle x)
+{
+	int result = (x.right_top.xpos - x.left_bottom.xpos) * (x.right_top.ypos - x.left_bottom.ypos);
+	return result;
+}
+
+int main(void)
+{
+	Rectangle nemo;
+	printf("좌측 하단 점의 좌표를 입력하세요 (x, y) : ");
+	scanf("%d %d", &nemo.left_bottom.xpos, &nemo.left_bottom.ypos);
+	printf("우측 상단 점의 좌표를 입력하세요 (x, y) : ");
+	scanf("%d %d", &nemo.right_top.xpos, &nemo.right_top.ypos);
+	printf("직사각형의 넓이는 : %d\n", calculation(nemo));
+}
