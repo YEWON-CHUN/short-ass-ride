@@ -1,0 +1,32 @@
+# include <stdio.h>
+# include <string.h>
+
+typedef struct mystery
+{
+	char name [80];
+	char joomin[80];
+	char tel[80];
+} MYS;
+
+
+int main(void)
+{
+	FILE* mys = fopen("C:\\Users\\USER\\Desktop\\chapter24\\mystory.txt", "wt");
+	MYS info;
+	strcpy(info.name, "#name : ");
+	strcpy(info.joomin, "#joomin : ");
+	strcpy(info.tel, "#tel : ");
+
+	printf("#이름: ");
+	fgets(&info.name[strlen(info.name)], sizeof(info.name), stdin);
+	printf("#주민번호: ");
+	fgets(&info.joomin[strlen(info.joomin)], sizeof(info.joomin), stdin);
+	printf("#전화번호: ");
+	fgets(&info.tel[strlen(info.tel)], sizeof(info.tel), stdin);
+
+	fputs(info.name, mys);
+	fputs(info.joomin, mys);
+	fputs(info.tel, mys);
+
+	return 0;
+}
