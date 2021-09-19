@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* inputstring(int i)
+{
+	char* s = (char*)malloc(sizeof(char) * i);
+	printf("문장을 입력하세요 : ");
+	gets(s);
+	return s;
+}
+
+int main(void)
+{
+	int i, j, h, cnt = 0;
+	printf("문자열의 최대길이를 입력하세요 : ");
+	scanf("%d", &i);
+	getc(stdin);
+	char* string;
+	string = inputstring(i);
+
+	for (j = (strlen(string) - 1); 0 <= j; j--)
+	{
+		if (string[j] != 32)
+			cnt++;
+		else
+		{
+			for (h = 0; h < cnt; h++)
+			{
+				printf("%c", string[j + h + 1]);
+			}
+			printf(" ");
+			cnt = 0;
+		}
+	}
+	for (int x = 0; x < cnt; x++)
+		printf("%c", string[x]);
+	return 0;
+}
