@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main(void)
+{
+	int arrlen = 5, j = 0, i;
+	int* arr = (int*)malloc(sizeof(int) * arrlen);
+
+	while (1)
+	{
+		printf("정수를 입력하세요 : ");
+		scanf("%d", &arr[j]);
+		if (arr[j] == -1)
+			break;
+		
+		if (arrlen == j + 1)  // 배열이 꽉 찬 경우
+		{
+			arrlen += 3;
+			arr = (int*)realloc(arr, sizeof(int) * arrlen);
+		}
+		j++;
+	}
+	for (i = 0; i < j; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	free(arr);
+	return 0;
+}
