@@ -1,0 +1,16 @@
+#include <stdio.h>
+#define hap(a, b, c) ((a)+(b)+(c))
+#define gop(a, b, c) ((a)*(b)*(c))
+
+int main(void)
+{
+	int num[3];
+	for (int i = 120; i <= 122; i++)
+	{
+		printf("%c를 입력하세요 : ", i);
+		scanf("%d", &num[i-120]);
+	}
+	printf("%d + %d + %d = %d\n", num[0], num[1], num[2], hap(num[0], num[1], num[2]));
+	printf("%d x %d x %d = %d", num[0], num[1], num[2], gop(num[0], num[1], num[2]));
+	return 0;
+}
