@@ -1,0 +1,27 @@
+https://www.acmicpc.net/problem/6588
+
+#import time
+while True:
+    #a = time.time()
+    n = int(input())
+    if n == 0:
+        break
+    else: # n 이하의 정수 중 가장 작은 '조건을 충족하는' 소수 구하기
+        for i in range(3, int(n*0.5)+1, 2):
+            IsSosu = True
+            for d in range(3, int(i**0.5)+1, 2):
+                if i % d == 0:
+                    IsSosu = False
+                    break
+            if IsSosu is True:
+                j = n - i
+                IsSosu2 = True
+                for k in range(3, int(j**0.5)+1, 2):
+                    if j % k == 0:
+                        IsSosu2 = False
+                        break
+                if IsSosu2 is True:
+                    print(f"{n} = {i} + {j}")
+                    break
+    #b = time.time()
+    #print(b-a)
