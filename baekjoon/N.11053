@@ -1,0 +1,19 @@
+https://www.acmicpc.net/problem/11053
+
+N = int(input())
+A = [0] + list(map(int, input().split()))
+D = [0 for x in range(N+1)]
+temp = [0]
+
+for i in range(1, N+1):
+    ISNEW = True
+    for j in range(len(temp)):
+        if A[i] <= temp[j]:
+            D[i] = j
+            temp[j] = min(temp[j], A[i])
+            ISNEW = False
+            break
+    if ISNEW is True:
+        D[i] = len(temp)
+        temp.append(A[i])
+print(len(temp)-1)
