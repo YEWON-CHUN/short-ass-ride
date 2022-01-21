@@ -1,0 +1,31 @@
+# https://www.acmicpc.net/problem/2644
+
+from collections import deque
+from sys import stdin
+
+N = int(input())
+cnt = 0
+graph = [[] for _ in range(N+1)]
+visited = [False for _ in range(N+1)]
+length = [-1 for _ in range(N+1)]
+
+a, b = map(int, input().split())
+queue = deque()
+queue.append(a)
+visited[a] = True
+length[a] = 0
+for _ in range(int(input())):
+    x, y = map(int, stdin.readline().split())
+    graph[x].append(y)
+    graph[y].append(x)
+
+while queue:
+    v = queue.popleft()
+    visited[v] = True
+    for i in graph[v]:
+        if not visited[i]:  # i번째 노드에 방문한 적 없다면
+            queue.append(i)
+            length[i] = length[v] + 1
+            if i == b:
+                break
+print(length[b])
