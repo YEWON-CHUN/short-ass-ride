@@ -1,0 +1,28 @@
+# https://www.acmicpc.net/problem/1388
+
+def dfs(g, r, c, s):  # i는 행번호 j는 열번호. 둘 다 0부터 시작
+    g[r][c] = '.'
+    for k in range(2*key.index(s),2*key.index(s)+2):
+        ny = r + dy[k]
+        nx = c + dx[k]
+        if 0 <= ny < M and 0 <= nx < N:
+            if g[ny][nx] == s:
+                dfs(g, ny, nx, s)
+
+
+M, N = map(int, input().split())
+graph = []
+for i in range(M):
+    graph.append(list(input()))
+
+dx = [1, -1, 0, 0]
+dy = [0, 0, 1, -1]
+key = ['-', '|']
+cnt = 0
+
+for i in range(M):
+    for j in range(N):
+        if graph[i][j] in key:
+            cnt += 1
+            dfs(graph, i, j, graph[i][j])
+print(cnt)
