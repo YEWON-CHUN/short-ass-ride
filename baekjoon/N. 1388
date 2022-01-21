@@ -1,0 +1,23 @@
+#https://www.acmicpc.net/problem/1388
+
+from collections import deque
+
+N = int(input())
+graph = []
+for i in range(N):
+    graph.append(list(map(int, input().split())))
+stack = deque()
+stack.append((0, 0))
+
+while stack:
+    vy, vx = stack.pop()
+    if graph[vy][vx] == -1:
+        print("HaruHaru")
+        quit()
+    right = (vy, vx+graph[vy][vx])
+    bottom = (vy+graph[vy][vx], vx)
+    if 0 <= right[1] < N and graph[right[0]][right[1]] != 0:
+        stack.append(right)
+    if 0 <= bottom[0] < N and graph[bottom[0]][bottom[1]] != 0:
+        stack.append(bottom)
+print("Hing")
