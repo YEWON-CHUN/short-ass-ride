@@ -1,0 +1,32 @@
+# https://www.acmicpc.net/problem/3184
+
+import sys
+
+def dfs(y, x):  # y : 행번호 / x : 열번호 / a : 양 마리 수 / b : 늑대 마리 수
+    global a, b
+    if graph[y][x] == 'o': a += 1
+    elif graph[y][x] == 'v': b += 1
+    graph[y][x] = '#'  # 방문한 좌표는 벽으로 처리
+    for k in range(4):
+        ny = y + dy[k]
+        nx = x + dx[k]
+        if 0 <= ny < R and 0 <= nx < C:  # 새롭게 이동할 좌표가 지도 범위 내에 위치한다면
+            if graph[ny][nx] != '#':
+                dfs(ny, nx)
+
+sys.setrecursionlimit(10**6)
+R, C = map(int, input().split())
+S, W = 0, 0
+graph = []
+for _ in range(R):
+    graph.append(list(input()))
+dy = [0, 0, 1, -1]
+dx = [1, -1, 0, 0]
+for i in range(R):
+    for j in range(C):
+        if graph[i][j] != '#':
+            a, b = 0, 0
+            dfs(i, j)
+            if a > b: S += a
+            else: W += b
+print(S, W)
